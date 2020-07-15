@@ -12,9 +12,10 @@ public class Main
         Scanner sc = new Scanner(System.in);//gets user input
         String filename;
         String street;
-        System.out.print("Enter the name of the dataset you would like to view:\n ");
+        System.out.print("Enter the name of the dataset you would like to view: ");
         filename = sc.next(); 
         List<Floods> records = Load(filename);
+        System.out.println("Number of records loaded: " + records.size());
         System.out.println("1. Display All Records.");
         System.out.println("2. Display Flood Services History using Street Name.");
         System.out.println("0. Quit");
@@ -40,15 +41,19 @@ public class Main
                     break;
                 //Displays all inquiries of floods on street entered.
                 case 2:
-                    System.out.print("Welcome to The City of Windsor's Flooding History API ");
+                    System.out.println("Welcome to The City of Windsor's Flooding History API ");
 					System.out.print("ENTER THE STREET NAME: ");
                     street = sc.next();
                     System.out.println("Floodings reported at the street entered are: ");
                     Street nearest = new Street(street, records);
                     List<Floods> nearCentres = nearest.find(records);
-                    for(Floods i: nearCentres)
-                        System.out.println(i);
-
+                    if(nearCentres.size()==0)
+                        System.out.println("There are NO customer initiated service requests found for street entered.");
+                    else {
+                        for (Floods i : nearCentres)
+                            System.out.println(i);
+                    }
+                    break;
                 case 0:
                     quit = true;
                     break;
