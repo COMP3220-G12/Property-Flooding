@@ -45,12 +45,12 @@ public class Main
 					System.out.print("ENTER THE STREET NAME: ");
                     street = sc.next();
                     System.out.println("Floodings reported at the street entered are: ");
-                    Street nearest = new Street(street, records);
-                    List<Floods> nearCentres = nearest.find(records);
-                    if(nearCentres.size()==0)
+                    Street stFlood = new Street(street, records);
+                    List<Floods> nearCentres = stFlood.find(records);
+                    if(sFlood.size()==0)
                         System.out.println("There are NO customer initiated service requests found for street entered.");
                     else {
-                        for (Floods i : nearCentres)
+                        for (Floods i : sFlood)
                             System.out.println(i);
                     }
                     break;
@@ -63,7 +63,7 @@ public class Main
         }while(!quit);
     }
 	
-	//Method to load the file entered by the user.
+     //Method to load the file entered by the user.
     //A new method to load the datasets dynamically will be added in next iteration.
 
     private static List<Floods> Load(String filename)
