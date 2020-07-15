@@ -46,7 +46,7 @@ public class Main
                     street = sc.next();
                     System.out.println("Floodings reported at the street entered are: ");
                     Street stFlood = new Street(street, records);
-                    List<Floods> nearCentres = stFlood.find(records);
+                    List<Floods> sFlood = stFlood.find(records);
                     if(sFlood.size()==0)
                         System.out.println("There are NO customer initiated service requests found for street entered.");
                     else {
